@@ -1,0 +1,11 @@
+<label></label>
+<div layout="row" layout-align="start center">
+  <input flex
+    type="button"
+    ng-disabled="response._rev"
+    value="{{question.question}}"
+    class="toggle {{question.classes}}"
+    ng-model="response.response"
+    ng-click="toggleClick(response); change(active.Patient, instance, questiongroup, response)"
+    ng-class="{checked:response.response}"
+</div>

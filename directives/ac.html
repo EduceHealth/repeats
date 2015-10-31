@@ -1,0 +1,17 @@
+<md-autocomplete
+     md-selected-item="selectedItem"
+     md-search-text-change="searchTextChange(searchText); change(active.Patient, instance, questiongroup, response);"
+     md-search-text="searchText"
+     md-selected-item-change="selectedItemChange(selectedItem); change(active.Patient, instance, questiongroup, response);"
+     md-items="match in matches(searchText)"
+     md-item-text="match.name"
+     md-min-length="0"
+     placeholder="{{question.question}}">
+     <!-- ng-disabled="!instance.current" -->
+  <md-item-template>
+    <span md-highlight-text="searchText" md-highlight-flags="^i">{{match.name}}</span>
+  </md-item-template>
+  <md-not-found>
+    No matches found for "{{searchText}}".
+  </md-not-found>
+</md-autocomplete>

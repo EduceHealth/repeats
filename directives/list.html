@@ -1,0 +1,21 @@
+<div layout="row">
+  <!-- <p ng-if="response._rev" flex>
+    {{response.creator}}<br/> {{response.timestamp|datestamp}}
+  </p> -->
+  <div flex>
+    <md-input-container>
+      <label>{{question.question}}</label>
+      <md-select ng-model="response.Answer"
+                 ng-disabled="!instance.current"
+                 ng-change="change(active.Patient, instance, questiongroup, response)"
+                 ng-class="question.classes"
+                 >
+        <md-option
+                ng-repeat="answer in question.Answers"
+                value="{{answer}}">
+          {{answer.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="/directives/eh-question-directive.js"></script>
+    <script src="/directives/eh-autocomplete-directive.js"></script>
+  </head>
+
+  <body ng-controller="testCtrl">
+    <div layout="row">
+      <div layout="column"
+           flex=25>
+        <md-button  ng-repeat="chapter in active.Intersection"
+                    ng-click="active.Chapter=chapter"
+        >{{chapter.title}}
+        </md-button>
+      </div>
+
+      <div class="chapter"
+           layout="column"
+           flex>
+           <h2>{{active.Chapter.title}}</h2>
+        <div ng-repeat="section in active.Chapter.sections track by $index"
+             layout="column"
+             class="section"
+             flex>
+           <!-- {{section | json}} -->
+          {{section.title}}
+          <div layout="column" layout-gt-sm="row">
+            <div ng-repeat="column in section.columns track by $index"
+              layout="column"
+              flex>
+              <!-- {{column | json}} -->
+              <div ng-repeat="questiongroup in column.questiongroups track by $index"
+                   class="eh-column"
+                   layout="column">
+                <!-- {{questiongroup | json}} -->
+                <h4>{{questiongroup.title}}</h4>
+                <!-- {{questiongroup.currentInstance | json}} -->
+                <div ng-repeat="instance in questiongroup.currentInstance track by instance._id"
+                   layout="column">
+                  <!-- <div ng-repeat = "question in instance.questions">
+                      {{question.Question.question}}
+                  </div> -->
+                  <eh-question-directive
+                      ng-repeat="question in instance.questions"
+                      question="question.Question"
+                      response="question.Response"
+                      questiongroup="questiongroup"
+                      patient="active.Patient"
+                      instance="instance"
+                      class="question">
+                  </eh-question-directive>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+
+  <!-- <md-datepicker  ng-model="response.response"
+                  md-placeholder="Enter date"
+                  ng-change="change(active.Patient, instance, questiongroupContainer.Questiongroup, response)"
+                  ng-class="question.classes">
+  </md-datepicker> -->
+
+
+<md-input-container>
+  <label class="responsive-md">{{question.question}}</label>
+  <input class="responsive-md"
+         ng-disabled="response._rev"
+         type="date"
+         value="response.response"
+         ng-model="response.response"
+         ng-change="change(patient, instance, questiongroup, response)"
+         ng-class="question.classes">
+  <!-- {{response.response}} -->
+  <!-- <span class="required-error" ng-show="question.questiongroupQuestion.Required&& !question.storedResponse.Value">* required</span> -->
+
+</md-input-container>

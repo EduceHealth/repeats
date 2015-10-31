@@ -1,0 +1,11 @@
+
+<md-input-container flex>
+  <label>{{question.question}}</label>
+      <textarea columns="1"
+                ng-disabled="response._rev"
+                ng-change="change(patient, instance, questiongroup, response)"
+                ng-placeholder="{{question.PlaceholderText}}"
+                ng-model="response.response"
+                ng-class="question.classes"></textarea>
+</md-input-container>
+<!-- <span class="required-error" ng-show="question.questiongroupQuestion.Required&& !question.storedResponse.Value">* required</span> -->

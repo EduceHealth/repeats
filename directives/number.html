@@ -1,0 +1,30 @@
+<div layout="row" flex>
+  <md-input-container>
+    <label>{{question.question}}</label>
+
+    <input type="number"
+           ng-disabled="response._rev"
+           ng-change="change(active.Patient, instance, questiongroupContainer.Questiongroup, response)"
+           ng-focus="wnlInputClick(question)"
+           ng-placeholder="question.PlaceholderText"
+           ng-class="question.classes"
+           ng-model="response.response"
+           ng-show="response.response!='WNL'"
+           ng-class="{wnl:question.classes.wnl}"
+           flex
+            >
+    <input type="text"
+           ng-disabled="response._rev"
+           ng-change="change(active.Patient, instance, questiongroupContainer.Questiongroup, response)"
+           ng-focus="wnlInputClick(question)"
+           ng-placeholder="question.PlaceholderText"
+           ng-class="question.classes"
+           ng-model="response.response"
+           ng-show="response.response=='WNL'"
+           flex
+            >
+  </md-input-container>
+  <md-button ng-show="question.classes.wnl && response.response !='WNL'" ng-click="wnlClick(question)" class="wnl">WNL</md-button>
+  <!-- <span class="required-error" ng-show="question.required&& !response.value">* required</span> -->
+
+</div>
